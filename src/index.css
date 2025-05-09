@@ -44,8 +44,8 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Enhanced gold color for luxury feel */
-    --gold: 36 60% 55%;
+    /* Replacing gold with neutral color */
+    --gold: 220 13% 40%; /* Changed to a neutral steel blue-gray */
   }
 
   .dark {
@@ -85,8 +85,8 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
     
-    /* Enhanced gold color for luxury feel in dark mode */
-    --gold: 36 80% 65%;
+    /* Replacing gold with neutral color in dark mode */
+    --gold: 220 13% 60%; /* Lighter variant for dark mode */
   }
 }
 
