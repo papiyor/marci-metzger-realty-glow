@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import PropertyCard, { PropertyProps } from './PropertyCard';
+import { motion } from 'framer-motion';
 
 const DUMMY_PROPERTIES: PropertyProps[] = [
   {
@@ -75,33 +76,54 @@ const Properties = () => {
     setVisibleProperties((prev) => Math.min(prev + 3, DUMMY_PROPERTIES.length));
   };
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
   return (
     <section id="properties" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold">Featured Properties</h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
             Discover our handpicked selection of properties in the most desirable neighborhoods
           </p>
-        </div>
+        </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {DUMMY_PROPERTIES.slice(0, visibleProperties).map((property) => (
-            <div 
-              key={property.id} 
-              className="opacity-0"
-              style={{
-                animation: 'fadeIn 0.6s ease-out forwards',
-                animationDelay: `${parseInt(property.id) * 0.1}s`
-              }}
-            >
+            <div key={property.id}>
               <PropertyCard {...property} />
             </div>
           ))}
-        </div>
+        </motion.div>
         
         {visibleProperties < DUMMY_PROPERTIES.length && (
-          <div className="text-center mt-12">
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+          >
             <Button 
               onClick={handleLoadMore}
               size="lg"
@@ -109,7 +131,7 @@ const Properties = () => {
             >
               Load More Properties
             </Button>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>
