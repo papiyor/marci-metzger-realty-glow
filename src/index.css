@@ -44,8 +44,8 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Custom colors for real estate site */
-    --gold: 36 55% 60%;
+    /* Enhanced gold color for luxury feel */
+    --gold: 36 60% 55%;
   }
 
   .dark {
@@ -84,6 +84,9 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Enhanced gold color for luxury feel in dark mode */
+    --gold: 36 80% 65%;
   }
 }
 
@@ -116,6 +119,18 @@
   
   .animate-underline {
     @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[hsl(var(--gold))] hover:after:w-full after:transition-all after:duration-300;
+  }
+  
+  .premium-card {
+    @apply bg-white rounded-lg shadow-premium hover:shadow-premium-lg transition-all duration-300;
+  }
+  
+  .premium-gradient {
+    @apply bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--gold))/70];
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--gold))/70] bg-clip-text text-transparent;
   }
 }
 

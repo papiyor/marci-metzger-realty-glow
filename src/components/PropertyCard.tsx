@@ -34,8 +34,11 @@ const PropertyCard = ({
       animate={{ opacity: 1, y: 0 }}
       className="h-full"
     >
-      <Card className="overflow-hidden h-full">
+      <Card className="overflow-hidden h-full border-border/40 shadow-xl hover:shadow-2xl transition-all duration-300">
         <div className="relative overflow-hidden h-64">
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 hover:opacity-100 transition-opacity duration-300"
+          />
           <motion.img
             src={image}
             alt={title}
@@ -44,21 +47,21 @@ const PropertyCard = ({
             transition={{ duration: 0.5 }}
           />
           {isNew && (
-            <Badge className="absolute top-3 left-3 bg-[hsl(var(--gold))] text-white">
+            <Badge className="absolute top-3 left-3 bg-[hsl(var(--gold))] text-white shadow-lg z-20">
               New Listing
             </Badge>
           )}
         </div>
         <CardContent className="pt-6">
-          <h3 className="text-xl font-semibold line-clamp-1">{title}</h3>
+          <h3 className="text-xl font-semibold line-clamp-1 text-foreground">{title}</h3>
           <div className="flex items-center gap-1 mt-1 text-muted-foreground">
-            <MapPin className="h-4 w-4" />
+            <MapPin className="h-4 w-4 text-[hsl(var(--gold))]" />
             <p className="text-sm line-clamp-1">{address}</p>
           </div>
-          <p className="mt-3 font-semibold text-lg">{price}</p>
+          <p className="mt-3 font-semibold text-lg text-[hsl(var(--gold))]">{price}</p>
         </CardContent>
-        <CardFooter className="border-t border-border pt-3 flex justify-between">
-          <div className="flex items-center gap-3">
+        <CardFooter className="border-t border-border/30 pt-3 flex justify-between">
+          <div className="flex items-center gap-4">
             <div className="text-sm">
               <span className="font-medium">{bedrooms}</span> <span className="text-muted-foreground">bd</span>
             </div>
